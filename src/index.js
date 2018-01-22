@@ -1,5 +1,6 @@
 const extend = require('zhf.extend');
 const getDomArray = require('zhf.get-dom-array');
+
 const createDom = require('zhf.create-dom');
 
 class Super {
