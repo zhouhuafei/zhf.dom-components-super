@@ -19,12 +19,6 @@
         "url": "https://github.com/zhouhuafei/zhf.dom-components-super/issues"
     },
     "homepage": "https://github.com/zhouhuafei/zhf.dom-components-super#readme",
-    "dependencies": {
-        "zhf.dom-create": "^1.0.2",
-        "zhf.dom-remove": "^1.0.2",
-        "zhf.extend": "^2.0.1",
-        "zhf.get-dom-array": "^1.0.0"
-    },
     "devDependencies": {
         "babel-eslint": "^8.0.2",
         "babel-preset-env": "^1.6.0",
@@ -40,5 +34,11 @@
         "gulp-rename": "^1.2.2",
         "gulp-uglify": "^3.0.0",
         "jest": "^22.1.1"
+    },
+    "dependencies": {
+        "zhf.dom-create": "^1.0.2",
+        "zhf.dom-remove": "^1.0.2",
+        "zhf.extend": "^2.0.1",
+        "zhf.get-dom-array": "^1.0.0"
     }
 }
