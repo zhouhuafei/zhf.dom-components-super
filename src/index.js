@@ -43,7 +43,7 @@ class Super {
 
     // 内部模块的创建(这个方法需要在子类型里被覆盖掉)
     moduleDomCreate() {
-        this.moduleDom = domCreate(`<div>moduleDomCreate</div>`);
+        this.moduleDom = domCreate(`<div></div>`);
     }
 
     // 功能(这个方法需要在子类型里被覆盖掉)

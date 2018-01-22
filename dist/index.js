@@ -5,9 +5,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var extend = require('zhf.extend');
-var getDomArray = require('zhf.get-dom-array');
 var domCreate = require('zhf.dom-create');
 var domRemove = require('zhf.dom-remove');
+var getDomArray = require('zhf.get-dom-array');
 
 var Super = function () {
     function Super(opts) {
@@ -44,10 +44,11 @@ var Super = function () {
     }, {
         key: 'require',
         value: function require() {
-            this.constructor.prototype.extend = extend;
-            this.constructor.prototype.getDomArray = getDomArray;
-            this.constructor.prototype.domCreate = domCreate;
-            this.constructor.prototype.domRemove = domRemove;
+            var prototype = this.constructor.prototype;
+            prototype.extend = extend;
+            prototype.getDomArray = getDomArray;
+            prototype.domCreate = domCreate;
+            prototype.domRemove = domRemove;
         }
 
         // 外部容器的获取
@@ -63,7 +64,7 @@ var Super = function () {
     }, {
         key: 'moduleDomCreate',
         value: function moduleDomCreate() {
-            this.moduleDom = domCreate('<div>moduleDomCreate</div>');
+            this.moduleDom = domCreate('<div></div>');
         }
 
         // 功能(这个方法需要在子类型里被覆盖掉)
@@ -88,6 +89,24 @@ var Super = function () {
         key: 'moduleDomRemove',
         value: function moduleDomRemove() {
             domRemove(this.moduleDom);
+        }
+
+        // 内部模块的隐藏
+
+    }, {
+        key: 'moduleDomShow',
+        value: function moduleDomShow() {
+            var moduleDom = this.moduleDom;
+            moduleDom && (moduleDom.style.display = '');
+        }
+
+        // 内部模块的显示
+
+    }, {
+        key: 'moduleDomHide',
+        value: function moduleDomHide() {
+            var moduleDom = this.moduleDom;
+            moduleDom && (moduleDom.style.display = 'none');
         }
     }]);
 
