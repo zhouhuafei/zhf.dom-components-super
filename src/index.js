@@ -1,7 +1,7 @@
 const extend = require('zhf.extend');
 const getDomArray = require('zhf.get-dom-array');
-
-const createDom = require('zhf.create-dom');
+const domCreate = require('zhf.dom-create');
+const domRemove = require('zhf.dom-remove');
 
 class Super {
     constructor(opts) {
@@ -15,26 +15,41 @@ class Super {
             // 数据
             data: {},
         }, opts);
-        const opt = this.opts;
-        this.wrapDom = getDomArray(opt.wrap)[0];
-        this.moduleDom = null;
         this.init();
     }
 
+    // 初始化
     init() {
-        this.render();
+        this.wrapDomGet();
+        this.moduleDomCreate();
         this.power();
+        this.moduleDomRender();
+    }
+
+    // 功能(这个方法需要在子类型里被覆盖掉)
+    power() {
+    }
+
+    // 外部容器的获取
+    wrapDomGet() {
+        this.wrapDom = getDomArray(this.opts.wrap)[0];
+    }
+
+    // 内部模块的创建(这个方法需要在子类型里被覆盖掉)
+    moduleDomCreate() {
+        this.moduleDom = domCreate(`<div>moduleDomCreate</div>`);
+    }
+
+    // 内部模块的渲染
+    moduleDomRender() {
         if (this.moduleDom) {
             this.wrapDom.appendChild(this.moduleDom);
         }
     }
 
-    render() {
-
-    }
-
-    power() {
-
+    // 内部模块的移除
+    moduleDomRemove() {
+        domRemove(this.moduleDom);
     }
 }
 
