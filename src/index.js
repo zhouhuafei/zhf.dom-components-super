@@ -61,6 +61,18 @@ class Super {
     moduleDomRemove() {
         domRemove(this.moduleDom);
     }
+
+    // 内部模块的隐藏
+    moduleDomShow() {
+        const moduleDom = this.moduleDom;
+        moduleDom && (moduleDom.style.display = '');
+    }
+
+    // 内部模块的显示
+    moduleDomHide() {
+        const moduleDom = this.moduleDom;
+        moduleDom && (moduleDom.style.display = 'none');
+    }
 }
 
 module.exports = Super;
