@@ -52,7 +52,7 @@ class Super {
 
     // 内部模块的渲染
     moduleDomRender() {
-        if (this.moduleDom) {
+        if (this.moduleDom && this.wrapDom) {
             this.wrapDom.appendChild(this.moduleDom);
         }
     }
