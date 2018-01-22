@@ -14,13 +14,18 @@ class Super {
             // 数据
             data: {},
         }, opts);
-        this.wrapDom = getDomArray(this.wrap)[0];
+        const opt = this.opts;
+        this.wrapDom = getDomArray(opt.wrap)[0];
+        this.moduleDom = null;
         this.init();
     }
 
     init() {
         this.render();
         this.power();
+        if (this.moduleDom) {
+            this.wrapDom.appendChild(this.moduleDom);
+        }
     }
 
     render() {
