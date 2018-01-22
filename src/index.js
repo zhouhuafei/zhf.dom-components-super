@@ -1,7 +1,7 @@
 const extend = require('zhf.extend');
-const getDomArray = require('zhf.get-dom-array');
 const domCreate = require('zhf.dom-create');
 const domRemove = require('zhf.dom-remove');
+const getDomArray = require('zhf.get-dom-array');
 
 class Super {
     constructor(opts) {
