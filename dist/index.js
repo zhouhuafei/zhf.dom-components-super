@@ -32,17 +32,23 @@ var Super = function () {
     _createClass(Super, [{
         key: 'init',
         value: function init() {
+            this.require();
             this.wrapDomGet();
             this.moduleDomCreate();
             this.power();
             this.moduleDomRender();
         }
 
-        // 功能(这个方法需要在子类型里被覆盖掉)
+        // 绑定方法
 
     }, {
-        key: 'power',
-        value: function power() {}
+        key: 'require',
+        value: function require() {
+            this.constructor.prototype.extend = extend;
+            this.constructor.prototype.getDomArray = getDomArray;
+            this.constructor.prototype.domCreate = domCreate;
+            this.constructor.prototype.domRemove = domRemove;
+        }
 
         // 外部容器的获取
 
@@ -59,6 +65,12 @@ var Super = function () {
         value: function moduleDomCreate() {
             this.moduleDom = domCreate('<div>moduleDomCreate</div>');
         }
+
+        // 功能(这个方法需要在子类型里被覆盖掉)
+
+    }, {
+        key: 'power',
+        value: function power() {}
 
         // 内部模块的渲染
 

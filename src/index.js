@@ -20,14 +20,20 @@ class Super {
 
     // 初始化
     init() {
+        this.require();
         this.wrapDomGet();
         this.moduleDomCreate();
         this.power();
         this.moduleDomRender();
     }
 
-    // 功能(这个方法需要在子类型里被覆盖掉)
-    power() {
+    // 绑定方法
+    require() {
+        const prototype = this.constructor.prototype;
+        prototype.extend = extend;
+        prototype.getDomArray = getDomArray;
+        prototype.domCreate = domCreate;
+        prototype.domRemove = domRemove;
     }
 
     // 外部容器的获取
@@ -38,6 +44,10 @@ class Super {
     // 内部模块的创建(这个方法需要在子类型里被覆盖掉)
     moduleDomCreate() {
         this.moduleDom = domCreate(`<div>moduleDomCreate</div>`);
+    }
+
+    // 功能(这个方法需要在子类型里被覆盖掉)
+    power() {
     }
 
     // 内部模块的渲染
