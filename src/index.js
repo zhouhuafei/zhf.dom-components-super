@@ -87,9 +87,9 @@ class Super {
             data: {},
         }, opts);
         // 函数内部自带的属性
-        this.moduleDom = null;// 内部的模块
-        this.wrapDom = null;// 内部模块的外部承载容器,如果没有也没关系,不过不往里面append罢了
-        this.moduleDomTimer = {};// 内部模块的定时器存储(假设内部模块有定时器)
+        this.moduleDom = null; // 内部的模块
+        this.wrapDom = null; // 内部模块的外部承载容器,如果没有也没关系,不过不往里面append罢了
+        this.moduleDomTimer = {}; // 内部模块的定时器存储(假设内部模块有定时器)
         this.init();
     }
 
@@ -112,15 +112,15 @@ class Super {
 
     // 渲染
     render() {
-        this.moduleDomRemove();// 内部模块的移除(重新初始化的时候要移除掉以前有的内部模块)
+        this.moduleDomRemove(); // 内部模块的移除(重新初始化的时候要移除掉以前有的内部模块)
 
         const callback = this.opts.callback;
         callback.moduleDomCreateBefore(this);
-        this.moduleDomCreate();// 内部模块的创建
+        this.moduleDomCreate(); // 内部模块的创建
         callback.moduleDomCreateAfter(this);
 
-        this.wrapDomGet();// 外部容器的获取
-        this.moduleDomRender();// 内部模块的渲染(如果外部容器存在,就把内部模块填充到外部容器里)
+        this.wrapDomGet(); // 外部容器的获取
+        this.moduleDomRender(); // 内部模块的渲染(如果外部容器存在,就把内部模块填充到外部容器里)
     }
 
     // 功能(这个方法需要在子类型里被覆盖掉)
