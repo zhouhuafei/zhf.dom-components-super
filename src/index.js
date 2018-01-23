@@ -113,13 +113,13 @@ class Super {
     // 渲染
     render() {
         this.moduleDomRemove(); // 内部模块的移除(重新初始化的时候要移除掉以前有的内部模块)
+        this.wrapDomGet(); // 外部容器的获取
 
         const callback = this.opts.callback;
         callback.moduleDomCreateBefore(this);
         this.moduleDomCreate(); // 内部模块的创建
         callback.moduleDomCreateAfter(this);
 
-        this.wrapDomGet(); // 外部容器的获取
         this.moduleDomRender(); // 内部模块的渲染(如果外部容器存在,就把内部模块填充到外部容器里)
     }
 
