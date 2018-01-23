@@ -2,5 +2,7 @@
 ```
 const Super = require('zhf.dom-components-super');
 
-new Super();
+const superObj = new Super();
+console.log(document.body.innerHTML); // <div></div>
+console.log(superObj.constructor === Super); // true
 ```
