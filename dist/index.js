@@ -78,7 +78,7 @@ var Super = function () {
     }, {
         key: 'moduleDomRender',
         value: function moduleDomRender() {
-            if (this.moduleDom) {
+            if (this.moduleDom && this.wrapDom) {
                 this.wrapDom.appendChild(this.moduleDom);
             }
         }

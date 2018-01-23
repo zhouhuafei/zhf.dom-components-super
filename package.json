@@ -1,6 +1,6 @@
 {
     "name": "zhf.dom-components-super",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "no description",
     "main": "dist/index.min.js",
     "scripts": {
@@ -36,7 +36,7 @@
         "jest": "^22.1.1"
     },
     "dependencies": {
-        "zhf.dom-create": "^1.0.2",
+        "zhf.dom-create": "^1.0.3",
         "zhf.dom-remove": "^1.0.2",
         "zhf.extend": "^2.0.1",
         "zhf.get-dom-array": "^1.0.0"
