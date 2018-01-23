@@ -1,28 +1,8 @@
 'use strict';
 
-var _createClass = function () {
-    function defineProperties(target, props) {
-        for (var i = 0; i < props.length; i++) {
-            var descriptor = props[i];
-            descriptor.enumerable = descriptor.enumerable || false;
-            descriptor.configurable = true;
-            if ('value' in descriptor) descriptor.writable = true;
-            Object.defineProperty(target, descriptor.key, descriptor);
-        }
-    }
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-    return function (Constructor, protoProps, staticProps) {
-        if (protoProps) defineProperties(Constructor.prototype, protoProps);
-        if (staticProps) defineProperties(Constructor, staticProps);
-        return Constructor;
-    };
-}();
-
-function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-        throw new TypeError('Cannot call a class as a function');
-    }
-}
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var extend = require('zhf.extend');
 var domCreate = require('zhf.dom-create');
@@ -97,7 +77,7 @@ var Super = function () {
                 // 外部容器移除之后
                 wrapDomRemoveAfter: function wrapDomRemoveAfter(self) {
                     // 外部容器移除之后的回调待续...
-                },
+                }
             },
             // 配置
             config: {
@@ -106,14 +86,14 @@ var Super = function () {
                 // 内部模块插入到外部容器的方式
                 moduleDomRenderMethod: {
                     method: 'appendChild', // 'appendChild','insertBefore'
-                    child: null,
+                    child: null
                 },
                 moduleDomStyle: {}, // 内部模块的样式
                 moduleDomIsRender: true, // 内部模块是否渲染
                 moduleDomIsClearTimer: true // 内部模块是否清除所有定时器(默认清除)
             },
             // 数据
-            data: {},
+            data: {}
         }, opts);
         // 函数内部自带的属性
         this.moduleDom = null; // 内部的模块
@@ -131,7 +111,7 @@ var Super = function () {
             this.require();
             this.render();
             this.power();
-        },
+        }
 
         // 绑定方法
 
@@ -144,7 +124,7 @@ var Super = function () {
             prototype.domRemove = domRemove;
             prototype.getDomArray = getDomArray;
             prototype.createElement = createElement;
-        },
+        }
 
         // 渲染
 
@@ -160,14 +140,13 @@ var Super = function () {
             callback.moduleDomCreateAfter(this);
 
             this.moduleDomRender(); // 内部模块的渲染(如果外部容器存在,就把内部模块填充到外部容器里)
-        },
+        }
 
         // 功能(这个方法需要在子类型里被覆盖掉)
 
     }, {
         key: 'power',
-        value: function power() {
-        },
+        value: function power() {}
         // 功能待续...
 
 
@@ -179,9 +158,9 @@ var Super = function () {
             this.moduleDom = createElement({
                 style: this.opts.config.moduleDomStyle,
                 customAttribute: this.opts.config.moduleDomCustomAttribute,
-                attribute: {},
+                attribute: {}
             });
-        },
+        }
 
         // 内部模块的渲染
 
@@ -206,7 +185,7 @@ var Super = function () {
                 }
                 callback.moduleDomRenderAfter(this);
             }
-        },
+        }
 
         // 内部模块的移除
 
@@ -220,7 +199,7 @@ var Super = function () {
                 callback.moduleDomRemoveAfter(this);
             }
             this.moduleDomClearTimer();
-        },
+        }
 
         // 内部模块的定时器清除(假设内部模块有定时器)
 
@@ -234,7 +213,7 @@ var Super = function () {
                     clearTimeout(self.moduleDomTimer[attr]);
                 });
             }
-        },
+        }
 
         // 内部模块的隐藏(显示隐藏和是否清除定时器无关)
 
@@ -242,13 +221,13 @@ var Super = function () {
         key: 'moduleDomHide',
         value: function moduleDomHide() {
             var callback = this.opts.callback;
-            if (this.moduleDom.parentNode) {
+            if (this.moduleDom && this.moduleDom.parentNode) {
                 this.opts.config.moduleDomIsRender = false;
                 callback.moduleDomHideBefore(this);
                 this.moduleDom.parentNode.removeChild(this.moduleDom);
                 callback.moduleDomHideAfter(this);
             }
-        },
+        }
 
         // 内部模块的显示(显示隐藏和是否清除定时器无关)
 
@@ -262,7 +241,7 @@ var Super = function () {
                 this.moduleDomRender();
             }
             callback.moduleDomShowAfter(this);
-        },
+        }
 
         // 外部容器的获取
 
@@ -273,7 +252,7 @@ var Super = function () {
             callback.wrapDomGetBefore(this);
             this.wrapDom = getDomArray(this.opts.wrap)[0];
             callback.wrapDomGetAfter(this);
-        },
+        }
 
         // 外部容器的移除
 
@@ -284,20 +263,20 @@ var Super = function () {
             // 先移除内部的模块
             this.moduleDomRemove();
             // 再移除外部的容器
-            if (this.wrapDom) {
+            if (this.wrapDom && this.wrapDom.parentNode) {
                 callback.wrapDomRemoveBefore(this);
                 this.wrapDom.parentNode.removeChild(this.wrapDom);
                 callback.wrapDomRemoveAfter(this);
             }
-        },
+        }
 
         // 获取内部模块的整体html结构
 
     }, {
         key: 'getModuleDomHtml',
         value: function getModuleDomHtml() {
-            return this.moduleDom.outerHTML;
-        },
+            return this.moduleDom && this.moduleDom.outerHTML;
+        }
     }]);
 
     return Super;
