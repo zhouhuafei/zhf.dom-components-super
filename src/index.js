@@ -141,7 +141,7 @@ class Super {
     moduleDomRender() {
         const callback = this.opts.callback;
         const config = this.opts.config;
-        if (config.moduleDomIsRender && this.wrapDom) {
+        if (config.moduleDomIsRender && this.wrapDom && this.moduleDom) {
             callback.moduleDomRenderBefore(this);
             const renderMethod = config.moduleDomRenderMethod;
             if (renderMethod.method === 'insertBefore') {
@@ -184,7 +184,7 @@ class Super {
     // 内部模块的隐藏(显示隐藏和是否清除定时器无关)
     moduleDomHide() {
         const callback = this.opts.callback;
-        if (this.moduleDom.parentNode) {
+        if (this.moduleDom && this.moduleDom.parentNode) {
             this.opts.config.moduleDomIsRender = false;
             callback.moduleDomHideBefore(this);
             this.moduleDom.parentNode.removeChild(this.moduleDom);
@@ -217,7 +217,7 @@ class Super {
         // 先移除内部的模块
         this.moduleDomRemove();
         // 再移除外部的容器
-        if (this.wrapDom) {
+        if (this.wrapDom && this.wrapDom.parentNode) {
             callback.wrapDomRemoveBefore(this);
             this.wrapDom.parentNode.removeChild(this.wrapDom);
             callback.wrapDomRemoveAfter(this);
@@ -226,7 +226,7 @@ class Super {
 
     // 获取内部模块的整体html结构
     getModuleDomHtml() {
-        return this.moduleDom.outerHTML;
+        return this.moduleDom && this.moduleDom.outerHTML;
     }
 }
 
