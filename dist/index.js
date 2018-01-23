@@ -111,6 +111,8 @@ var Super = function () {
             this.require();
             this.render();
             this.power();
+
+            this.moduleDomRender(); // 内部模块的渲染(如果外部容器存在,就把内部模块填充到外部容器里)
         }
 
         // 绑定方法
@@ -138,8 +140,6 @@ var Super = function () {
             callback.moduleDomCreateBefore(this);
             this.moduleDomCreate(); // 内部模块的创建
             callback.moduleDomCreateAfter(this);
-
-            this.moduleDomRender(); // 内部模块的渲染(如果外部容器存在,就把内部模块填充到外部容器里)
         }
 
         // 功能(这个方法需要在子类型里被覆盖掉)
