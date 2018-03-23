@@ -81,6 +81,8 @@ var Super = function () {
             },
             // 配置
             config: {
+                // 内部模块的属性
+                moduleDomAttribute: {},
                 // 内部模块的自定义属性
                 moduleDomCustomAttribute: {},
                 // 内部模块插入到外部容器的方式
@@ -155,10 +157,11 @@ var Super = function () {
     }, {
         key: 'moduleDomCreate',
         value: function moduleDomCreate() {
+            var config = this.opts.config;
             this.moduleDom = createElement({
-                style: this.opts.config.moduleDomStyle,
-                customAttribute: this.opts.config.moduleDomCustomAttribute,
-                attribute: {}
+                style: config.moduleDomStyle,
+                customAttribute: config.moduleDomCustomAttribute,
+                attribute: this.extend({}, config.moduleDomAttribute)
             });
         }
 

@@ -72,6 +72,8 @@ class Super {
             },
             // 配置
             config: {
+                // 内部模块的属性
+                moduleDomAttribute: {},
                 // 内部模块的自定义属性
                 moduleDomCustomAttribute: {},
                 // 内部模块插入到外部容器的方式
@@ -130,10 +132,11 @@ class Super {
 
     // 内部模块的创建(这个方法需要在子类型里被覆盖掉)
     moduleDomCreate() {
+        const config = this.opts.config;
         this.moduleDom = createElement({
-            style: this.opts.config.moduleDomStyle,
-            customAttribute: this.opts.config.moduleDomCustomAttribute,
-            attribute: {},
+            style: config.moduleDomStyle,
+            customAttribute: config.moduleDomCustomAttribute,
+            attribute: this.extend({}, config.moduleDomAttribute),
         });
     }
 
