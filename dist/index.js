@@ -5,7 +5,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var extend = require('zhf.extend');
-var domCreate = require('zhf.dom-create');
+var htmlToDom = require('zhf.html-to-dom');
 var domRemove = require('zhf.dom-remove');
 var getDomArray = require('zhf.get-dom-array');
 var createElement = require('zhf.create-element');
@@ -124,7 +124,7 @@ var Super = function () {
         value: function require() {
             var prototype = this.constructor.prototype;
             prototype.extend = extend;
-            prototype.domCreate = domCreate;
+            prototype.htmlToDom = htmlToDom;
             prototype.domRemove = domRemove;
             prototype.getDomArray = getDomArray;
             prototype.createElement = createElement;

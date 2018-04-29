@@ -1,5 +1,5 @@
 const extend = require('zhf.extend');
-const domCreate = require('zhf.dom-create');
+const htmlToDom = require('zhf.html-to-dom');
 const domRemove = require('zhf.dom-remove');
 const getDomArray = require('zhf.get-dom-array');
 const createElement = require('zhf.create-element');
@@ -108,7 +108,7 @@ class Super {
     require() {
         const prototype = this.constructor.prototype;
         prototype.extend = extend;
-        prototype.domCreate = domCreate;
+        prototype.htmlToDom = htmlToDom;
         prototype.domRemove = domRemove;
         prototype.getDomArray = getDomArray;
         prototype.createElement = createElement;
