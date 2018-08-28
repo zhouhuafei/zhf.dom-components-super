@@ -278,7 +278,7 @@ var Super = function () {
     }, {
         key: 'getModuleDomHtml',
         value: function getModuleDomHtml() {
-            return this.moduleDom && this.moduleDom.outerHTML;
+            return this.moduleDom ? this.moduleDom.outerHTML : '';
         }
     }]);
 

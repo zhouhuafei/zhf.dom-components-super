@@ -229,7 +229,7 @@ class Super {
 
     // 获取内部模块的整体html结构
     getModuleDomHtml() {
-        return this.moduleDom && this.moduleDom.outerHTML;
+        return this.moduleDom ? this.moduleDom.outerHTML : '';
     }
 }
 
