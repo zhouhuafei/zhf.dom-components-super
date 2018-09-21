@@ -1,6 +1,4 @@
 const extend = require('zhf.extend');
-const htmlToDom = require('zhf.html-to-dom');
-const domRemove = require('zhf.dom-remove');
 const getDomArray = require('zhf.get-dom-array');
 const createElement = require('zhf.create-element');
 
@@ -85,8 +83,6 @@ class Super {
                 moduleDomIsRender: true, // 内部模块是否渲染
                 moduleDomIsClearTimer: true, // 内部模块是否清除所有定时器(默认清除)
             },
-            // 数据
-            data: {},
         }, opts);
         // 函数内部自带的属性
         this.moduleDom = null; // 内部的模块
@@ -97,21 +93,10 @@ class Super {
 
     // 初始化
     init() {
-        this.require();
         this.render();
         this.power();
 
         this.moduleDomRender(); // 内部模块的渲染(如果外部容器存在,就把内部模块填充到外部容器里)
-    }
-
-    // 绑定方法
-    require() {
-        const prototype = this.constructor.prototype;
-        prototype.extend = extend;
-        prototype.htmlToDom = htmlToDom;
-        prototype.domRemove = domRemove;
-        prototype.getDomArray = getDomArray;
-        prototype.createElement = createElement;
     }
 
     // 渲染
@@ -136,7 +121,7 @@ class Super {
         this.moduleDom = createElement({
             style: config.moduleDomStyle,
             customAttribute: config.moduleDomCustomAttribute,
-            attribute: this.extend({}, config.moduleDomAttribute),
+            attribute: extend({}, config.moduleDomAttribute),
         });
     }
 

@@ -37,9 +37,7 @@
     },
     "dependencies": {
         "zhf.create-element": "^1.0.0",
-        "zhf.dom-remove": "^1.0.2",
         "zhf.extend": "^2.0.1",
-        "zhf.get-dom-array": "^1.0.0",
-        "zhf.html-to-dom": "^1.0.2"
+        "zhf.get-dom-array": "^1.0.0"
     }
 }
