@@ -5,8 +5,6 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var extend = require('zhf.extend');
-var htmlToDom = require('zhf.html-to-dom');
-var domRemove = require('zhf.dom-remove');
 var getDomArray = require('zhf.get-dom-array');
 var createElement = require('zhf.create-element');
 
@@ -93,9 +91,7 @@ var Super = function () {
                 moduleDomStyle: {}, // 内部模块的样式
                 moduleDomIsRender: true, // 内部模块是否渲染
                 moduleDomIsClearTimer: true // 内部模块是否清除所有定时器(默认清除)
-            },
-            // 数据
-            data: {}
+            }
         }, opts);
         // 函数内部自带的属性
         this.moduleDom = null; // 内部的模块
@@ -110,24 +106,8 @@ var Super = function () {
     _createClass(Super, [{
         key: 'init',
         value: function init() {
-            this.require();
             this.render();
             this.power();
-
-            this.moduleDomRender(); // 内部模块的渲染(如果外部容器存在,就把内部模块填充到外部容器里)
-        }
-
-        // 绑定方法
-
-    }, {
-        key: 'require',
-        value: function require() {
-            var prototype = this.constructor.prototype;
-            prototype.extend = extend;
-            prototype.htmlToDom = htmlToDom;
-            prototype.domRemove = domRemove;
-            prototype.getDomArray = getDomArray;
-            prototype.createElement = createElement;
         }
 
         // 渲染
@@ -135,13 +115,13 @@ var Super = function () {
     }, {
         key: 'render',
         value: function render() {
-            this.moduleDomRemove(); // 内部模块的移除(重新初始化的时候要移除掉以前有的内部模块)
             this.wrapDomGet(); // 外部容器的获取
-
+            this.moduleDomRemove(); // 内部模块的移除(重新初始化的时候要移除掉以前有的内部模块)
             var callback = this.opts.callback;
             callback.moduleDomCreateBefore(this);
             this.moduleDomCreate(); // 内部模块的创建
             callback.moduleDomCreateAfter(this);
+            this.moduleDomRender(); // 内部模块的渲染(如果外部容器存在,就把内部模块填充到外部容器里)
         }
 
         // 功能(这个方法需要在子类型里被覆盖掉)
@@ -161,7 +141,7 @@ var Super = function () {
             this.moduleDom = createElement({
                 style: config.moduleDomStyle,
                 customAttribute: config.moduleDomCustomAttribute,
-                attribute: this.extend({}, config.moduleDomAttribute)
+                attribute: extend({}, config.moduleDomAttribute)
             });
         }
 
