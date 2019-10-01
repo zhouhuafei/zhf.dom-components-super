@@ -22,59 +22,59 @@ var Super = function () {
             callback: {
                 // 内部模块创建之前
                 moduleDomCreateBefore: function moduleDomCreateBefore(self) {
-                    // 内部模块创建之前的回调待续...
+                    // 内部模块创建之前的回调
                 },
                 // 内部模块创建之后
                 moduleDomCreateAfter: function moduleDomCreateAfter(self) {
-                    // 内部模块创建之后的回调待续...
+                    // 内部模块创建之后的回调
                 },
                 // 内部模块渲染之前
                 moduleDomRenderBefore: function moduleDomRenderBefore(self) {
-                    // 内部模块渲染之前的回调待续...
+                    // 内部模块渲染之前的回调
                 },
                 // 内部模块渲染之后
                 moduleDomRenderAfter: function moduleDomRenderAfter(self) {
-                    // 内部模块渲染之后的回调待续...
+                    // 内部模块渲染之后的回调
                 },
                 // 内部模块移除之前
                 moduleDomRemoveBefore: function moduleDomRemoveBefore(self) {
-                    // 内部模块移除之前的回调待续...
+                    // 内部模块移除之前的回调
                 },
                 // 内部模块移除之后
                 moduleDomRemoveAfter: function moduleDomRemoveAfter(self) {
-                    // 内部模块移除之后的回调待续...
+                    // 内部模块移除之后的回调
                 },
                 // 内部模块显示之前
                 moduleDomShowBefore: function moduleDomShowBefore(self) {
-                    // 内部模块显示之前的回调待续...
+                    // 内部模块显示之前的回调
                 },
                 // 内部模块显示之后
                 moduleDomShowAfter: function moduleDomShowAfter(self) {
-                    // 内部模块显示之后的回调待续...
+                    // 内部模块显示之后的回调
                 },
                 // 内部模块隐藏之前
                 moduleDomHideBefore: function moduleDomHideBefore(self) {
-                    // 内部模块隐藏之前的回调待续...
+                    // 内部模块隐藏之前的回调
                 },
                 // 内部模块隐藏之后
                 moduleDomHideAfter: function moduleDomHideAfter(self) {
-                    // 内部模块隐藏之后的回调待续...
+                    // 内部模块隐藏之后的回调
                 },
                 // 外部容器获取之前
                 wrapDomGetBefore: function wrapDomGetBefore(self) {
-                    // 外部容器获取之前的回调待续...
+                    // 外部容器获取之前的回调
                 },
                 // 外部容器获取之后
                 wrapDomGetAfter: function wrapDomGetAfter(self) {
-                    // 外部容器获取之后的回调待续...
+                    // 外部容器获取之后的回调
                 },
                 // 外部容器移除之前
                 wrapDomRemoveBefore: function wrapDomRemoveBefore(self) {
-                    // 外部容器移除之前的回调待续...
+                    // 外部容器移除之前的回调
                 },
                 // 外部容器移除之后
                 wrapDomRemoveAfter: function wrapDomRemoveAfter(self) {
-                    // 外部容器移除之后的回调待续...
+                    // 外部容器移除之后的回调
                 }
             },
             // 配置
@@ -129,7 +129,7 @@ var Super = function () {
     }, {
         key: 'power',
         value: function power() {}
-        // 功能待续...
+        // 功能
 
 
         // 内部模块的创建(这个方法需要在子类型里被覆盖掉)
